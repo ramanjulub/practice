@@ -21,8 +21,7 @@ pipeline {
         }
         stage('Deploy to Minikube') {
             steps {
-                sshagent(['-----BEGIN RSA PRIVATE KEY-----
-MIIG4wIBAAKCAYEAu06zkOVwlo7uSegC8uXlVOhlHeEBY2L7PZDA0sMK8CBQD4Ie
+                sshagent(['MIIG4wIBAAKCAYEAu06zkOVwlo7uSegC8uXlVOhlHeEBY2L7PZDA0sMK8CBQD4Ie
 XtkjpY7oGU0UjN/Y3SA45cm+al+5/sjInmzaaoUzBZBQYzdfm5wRvPLZuSWawwU/
 N0ZFb0ajO7oSpK3yUafYLyJuh85LEbx/7Y7HG7rWIQB4XStKDoahyYt841gaknDn
 DECxPKXocm0mkv3BiwjwSW7Vi8b53XKFPNHgz0EUJGtU1u1zwCqqLlws3U9CiEm3
@@ -58,9 +57,7 @@ kx+EBI5OcuLXj/dybEXmwOj02a2d7G0eEnKiG1T017j2mDy1AoHAShHHgnkwAD03
 FcoJpdpXbPL18XCfs+njXJXCuIYANPF2o9VO903NlRRlAkd5nc8bjRIbsht8YMzr
 G6FdxmMzo7A8hMsUF1nBZd78g3v7hf1W8NKTlquyPPEDvX4q6pwDaQd4nN+/Okdw
 jWVnvrcmadD9NBUb1nhxjw41Lh25xlwV+44rFLUiQmfQ8N276Jc11BLQ9+AQq1Df
-AwpQ3x6JmrDkQ6CVBD66cGAv5Brtqr9ZBDZT19Uw4iuogTxMRlG/
------END RSA PRIVATE KEY-----
-']) {
+AwpQ3x6JmrDkQ6CVBD66cGAv5Brtqr9ZBDZT19Uw4iuogTxMRlG/']) {
                     sh '''
                     scp deployment.yaml service.yaml azureuser@VM2_IP:/home/azureuser/k8s-manifests/
                     ssh azureuser@135.235.218.198 "kubectl apply -f ~/k8s-manifests/deployment.yaml && kubectl apply -f ~/k8s-manifests/service.yaml"
